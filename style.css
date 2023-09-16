@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow-x: hidden;
+}
+
+/* Marquee */
+
+.mar-wrapper{
+    width: 100%;
+    max-width: 100vw;
+    margin-inline: auto;
+    padding: 40px 0px;
+    border-radius:10px;
+    position: absolute;
+    top: 0;
+    left: -70px;
+    transform: rotate(-20deg);
+    filter: blur(1.2px);
+}
+.mar-wrapper:nth-child(2){
+    top: 17em;
+    right: -362px;
+    transform: rotate(30deg);
+    filter: blur(2px);
+}
+.mar-wrapper section > .marquee{
+    max-height:40px;
+    font-size: 45px;
+}
+
+  /* Marquee section */
+
+section#marquee{
+    isolation: isolate;
+}
+section > .marquee{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(20px, 20vw, 40px);
+    font-weight: 700;
+    text-transform: uppercase;
+    color:  black;
+}
+
+.marquee{
+    --translate-3d-x: -5%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+.marquee::before {
+  display: block;
+  white-space: pre;
+  content: attr(data-text) " " attr(data-text) " " attr(data-text) " " attr(data-text) " " attr(data-text)  " " attr(data-text) " " attr(data-text) " " attr(data-text) " " attr(data-text) " " attr(data-text) " " attr(data-text) " " attr(data-text) " " attr(data-text) " " attr(data-text) " " attr(data-text)  " " attr(data-text) " " attr(data-text) " " attr(data-text) " " attr(data-text) " " attr(data-text);
+  width:-webkit-fit-content;
+  width:-moz-fit-content;
+  width:fit-content;
+  transform: translate3d(var(--translate-3d-x, -2%), 0, 0);
+  will-change: transform;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee::before {animation: marquee 60s linear infinite;}
+  .marquee--reverse::before {animation-direction: reverse;}
+}
+
+@keyframes marquee {
+  0% {transform: translate3d(var(--translate-3d-x, -2%), 0, 0);}
+  100% {transform: translate3d(calc(var(--translate-3d-x) - 5% - 1px), 0, 0);}
+}
+
+.wrapper {
+    text-align: center;
+}
+
+button{
+    padding: 12px 2em;
+    margin-top: 1em;
+    border-radius: 7px;
+    border-style: .3px solid black;
+    cursor: pointer;
+}
